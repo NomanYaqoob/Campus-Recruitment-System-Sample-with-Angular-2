@@ -1,0 +1,3 @@
+<h4>POSTS</h4>
+<posts-list [companyKey]="companyId" [posts]="(posts$ | async)" [currentUser]="(user$ | async)"
+(applyEvent)="applyEventHandler($event)"></posts-list>

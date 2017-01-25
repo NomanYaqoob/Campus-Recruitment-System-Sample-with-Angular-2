@@ -1,0 +1,78 @@
+<login-nav></login-nav>
+<div class="container">
+    <div class="row">
+        <div class="col s4 offset-s4">
+            <h4 class="cred">Create Account</h4>
+            <div class="card">
+                <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f.valid,f.value)">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <div class="input-field">
+
+                                <!-- Dropdown Trigger -->
+                                <a class='dropdown-button btn' materialize="dropdown" data-activates='dropdown1'>Drop Me!</a>
+                                <!--<i materialize="dropdown" class="material-icons large" data-activates='dropdown1'>more_vert</i>-->
+                                <!--<a class='dropdown-button btn' href='#'>Drop Me!</a>-->
+                                <!-- Dropdown Structure -->
+                                <ul id='dropdown1' class='dropdown-content'>
+                                    <li><a (click)="user.type = 'company'">Company</a></li>
+                                    <li><a (click)="user.type = 'student'">Student</a></li>
+                                </ul>
+                            </div>
+                            <div class="input-field">
+                                <input id="firstName" #type="ngModel" name="type" [(ngModel)]="user.type" type="text" class="validate">
+                                <label for="type">Account Type</label>
+                            </div>
+                            <div *ngIf="user.type=='student'">
+
+                                <div class="input-field">
+                                    <input id="firstName" #firstName="ngModel" name="firstName" [(ngModel)]="user.firstName" type="text" class="validate">
+                                    <label for="firstName">First Name</label>
+                                </div>
+                                <div class="input-field ">
+                                    <input id="lastName" #lastName="ngModel" name="lastName" [(ngModel)]="user.lastName" type="text" class="validate">
+                                    <label for="lastName">Last Name</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="Username" #username="ngModel" name="username" [(ngModel)]="user.username" type="text" class="validate">
+                                    <label for="Username">Username</label>
+                                </div>
+                            </div>
+                            <div *ngIf="user.type=='company'">
+
+                                <div class="input-field">
+                                    <input id="name" #name="ngModel" name="name" [(ngModel)]="user.name" type="text" class="validate">
+                                    <label for="name">Company Name</label>
+                                </div>
+                                <div class="input-field ">
+                                    <input id="address" #address="ngModel" name="address" [(ngModel)]="user.address" type="text" class="validate">
+                                    <label for="lastName">Company Address</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="url" #url="ngModel" name="url" [(ngModel)]="user.url" type="url" class="validate">
+                                    <label for="Username">Company Url</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="url" #compId="ngModel" name="compId" [(ngModel)]="user.compId" type="text" class="validate">
+                                    <label for="Username">Company uniqueId</label>
+                                </div>
+                            </div>
+                            <div class="input-field ">
+                                <input id="email" type="email" name="email" class="validate" #email="ngModel" [(ngModel)]="user.email">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="password" type="password" name="password" class="validate" #password="ngModel" [(ngModel)]="user.password">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <!--<a class="waves-effect waves-light btn">Signup</a>-->
+                            <button type="submit" class="waves-effect waves-light btn right-align">Signup</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

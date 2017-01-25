@@ -1,0 +1,45 @@
+<div *ngIf="(user$ | async).type == 1">
+    <div class="card">
+        <h4>Companies List</h4>
+        <companies-list [companies]="(companies$ | async)" [user]='(user$ | async)'></companies-list>
+    </div>
+</div>
+
+<div *ngIf="(user$ | async).type == 2">
+    <div class="card">
+        <a class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Select</a>
+        <students-data [students]="(students$ | async)"></students-data>
+    </div>
+</div>
+
+
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <h4>Add Job Post</h4>
+        <form #f='ngForm' (ngSubmit)="onSubmit(f.valid,f.value)">
+            <div class="row">
+                <div class="col s6">
+                    <div class="input-field">
+                        <input id="title" #title="ngModel" name="title" [(ngModel)]="post.title" type="text" class="validate">
+                        <label for="title">Job Title</label>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <div class="input-field">
+                        <input id="sal" #sal="ngModel" name="sal" [(ngModel)]="post.sal" type="text" class="validate">
+                        <label for="sal">Expected Salary</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <textarea id="textarea1" name='desc' class="materialize-textarea" placeholder="Description..." [(ngModel)]="post.desc"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect" type="submit">Done</button>
+                <!--<a (click)="closeModal()" class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>-->
+            </div>
+        </form>
+    </div>
+</div>

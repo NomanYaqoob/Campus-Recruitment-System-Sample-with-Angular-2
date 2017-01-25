@@ -1,0 +1,19 @@
+<nav>
+    <div class="nav-wrapper">
+        <a (click)="goHome()" class="brand-logo">Campus Recruitment System</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <!-- Dropdown Trigger -->
+            <i materialize="dropdown" class="material-icons large" data-activates='dropdown1'>more_vert</i>
+            <!--<a class='dropdown-button btn' href='#'>Drop Me!</a>-->
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li routerLink="/profile" *ngIf='user.type==1'><a>Profile</a></li>
+                <li [routerLink]="['/posts',user.compId]" *ngIf='user.type==2'><a>Posts</a></li>
+                <li><a (click)="signOut()">Sign Out</a></li> 
+            </ul>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

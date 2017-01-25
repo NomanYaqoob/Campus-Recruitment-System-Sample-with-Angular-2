@@ -1,0 +1,54 @@
+{
+  "name": "boiler-plate-webpack-angular2-redux",
+  "version": "0.0.1",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build:prod": "webpack --progress --optimize-minimize",
+    "serve": "webpack-dev-server --progress --inline --profile --colors --display-error-details --history-api-fallback true --open",
+    "start": "npm run clean && npm run serve"
+  },
+  "author": {
+    "name": "Noman Yaqoob",
+    "github": "http://github.com/nomanyaqoob"
+  },
+  "dependencies": {
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0",
+    "@angular/forms": "~2.4.0",
+    "@angular/http": "~2.4.0",
+    "@angular/platform-browser": "~2.4.0",
+    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/router": "~3.4.0",
+    "angular-in-memory-web-api": "~0.2.4",
+    "angular2-materialize": "^6.6.0",
+    "angularfire2": "^2.0.0-beta.7",
+    "core-js": "2.4.1",
+    "firebase": "^3.6.5",
+    "hammerjs": "^2.0.8",
+    "jquery": "^2.2.4",
+    "loaders.css": "^0.1.2",
+    "materialize-css": "^0.97.8",
+    "ng2-redux": "^5.1.0",
+    "redux": "^3.6.0",
+    "redux-observable": "^0.12.2",
+    "reflect-metadata": "^0.1.9",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.6"
+  },
+  "devDependencies": {
+    "@types/core-js": "0.9.34",
+    "copy-webpack-plugin": "3.0.1",
+    "html-webpack-plugin": "2.22.0",
+    "json-loader": "0.5.4",
+    "node-sass": "3.8.0",
+    "raw-loader": "0.5.1",
+    "sass-loader": "4.0.0",
+    "ts-loader": "0.8.2",
+    "typescript": "2.0.3",
+    "typings": "1.3.2",
+    "ng2-img-cropper": "0.7.1",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "1.14.1"
+  }
+}

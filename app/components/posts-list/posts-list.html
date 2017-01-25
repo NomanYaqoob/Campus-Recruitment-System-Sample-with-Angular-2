@@ -1,0 +1,36 @@
+<div class="card">
+    <table class="striped">
+        <thead>
+            <tr>
+                <th data-field="title">Job Title</th>
+                <th data-field="sal">Expected Salary</th>
+                <th data-field="desc">Description</th>
+                <th data-field="date">Date</th>
+                <th data-field="apply" *ngIf="currentUser && currentUser?.status == 0 && currentUser?.type==1">Apply</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let post of keys(posts)">
+                <td>{{(posts)[post]?.title}}</td>
+                <td>{{(posts)[post]?.sal}}</td>
+                <td>{{(posts)[post]?.desc}}</td>
+                <td>{{(posts)[post]?.timestamp | date }}</td>
+                <td><a class="waves-effect waves-light btn" *ngIf="currentUser && currentUser?.status == 0 && currentUser?.type==1"
+                        (click)="openModal(post,posts[post]?.companyUid)">Apply</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <h4>Job Application</h4>
+        <p>This action cant be undone, are you sure do you want to continue?</p>
+    </div>
+    <div class="modal-footer">
+        <a (click)="closeModal(true)" class=" modal-action modal-close waves-effect waves-green btn-flat">Sure</a>
+        <a (click)="closeModal(false)" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>

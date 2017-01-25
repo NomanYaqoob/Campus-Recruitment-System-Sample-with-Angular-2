@@ -1,0 +1,44 @@
+<login-nav></login-nav>
+<div class="container">
+    <div class="row">
+        <div class="col s4 offset-s4">
+            <h4 class="cred">Login</h4>
+            <div class="card">
+                <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f.valid,f.value)">
+
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <div class="input-field">
+                                <!-- Dropdown Trigger -->
+                                <a class='dropdown-button btn' materialize="dropdown" data-activates='dropdown1'>Drop Me!</a>
+                                <!--<i materialize="dropdown" class="material-icons large" data-activates='dropdown1'>more_vert</i>-->
+                                <!--<a class='dropdown-button btn' href='#'>Drop Me!</a>-->
+                                <!-- Dropdown Structure -->
+                                <ul id='dropdown1' class='dropdown-content'>
+                                    <li><a (click)="user.type = 'company'">Company</a></li>
+                                    <li><a (click)="user.type = 'student'">Student</a></li>
+                                </ul>
+                                {{user.type | json}}
+                            </div>
+                            <div class="input-field">
+                                <input id="firstName" #type="ngModel" name="type" [(ngModel)]="user.type" type="text" class="validate">
+                                <label for="type">Account Type</label>
+                            </div>
+                            <div class="input-field">
+                                <input name="email" id="email" #email="ngModel" [(ngModel)]="user.email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="password" name="password" #password="ngModel" [(ngModel)]="user.password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button type="submit" class="waves-effect waves-light btn">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

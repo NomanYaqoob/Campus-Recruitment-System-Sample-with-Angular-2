@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs" materialize="tabs">
+            <li class="tab col s6"><a href="#test1">Students List</a></li>
+            <li class="tab col s6"><a href="#test2">Students Applied</a></li>
+        </ul>
+    </div>
+    <div id="test1" class="col s12">
+        <h4>Users of the Campus</h4>
+        <table class="highlight bordered">
+            <thead>
+                <tr>
+                    <th data-field="id" class="col s2"></th>
+                    <th data-field="name" class="col s5">Full Name</th>
+                    <th data-field="address" class="col s5">Email</th>
+                    <!--<th data-field="apply" *ngIf="user.status==0 && user.type==1">Apply</th>-->
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let student of keys((students));let i = index" >
+                    <td class="col s2"> <img class="image" *ngIf="(students)[student]['profile-image']" [src]="(students)[student]['profile-image']"
+                            alt=""></td>
+                    <td class="col s5 takeMargin">{{(students)[student]?.firstName + " " + (students)[student]?.lastName }}</td>
+                    <td class="col s5 takeMargin">{{(students)[student]?.email}}</td>
+                    <!--<td><a class="waves-effect waves-light btn" *ngIf="user.status==0 && user.type==1" [routerLink]="['/posts',(companies)[company]?.compId]">Posts</a></td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="test2" class="col s12">Test 2</div>
+</div>

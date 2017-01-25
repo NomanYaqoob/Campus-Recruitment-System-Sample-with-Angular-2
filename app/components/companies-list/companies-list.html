@@ -1,0 +1,23 @@
+<table class="responsive-table highlight bordered">
+    <thead>
+        <tr>
+            <th data-field="id" class="center-align">S#</th>
+            <th data-field="name" class="center-align">Company Name</th>
+            <th data-field="address" class="center-align">Address</th>
+            <th data-field="website" class="center-align" >Website</th>
+            <th data-field="email" class="center-align">Email</th>
+            <th data-field="apply" *ngIf="user.status==0 && user.type==1">Apply</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let company of keys((companies));let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{(companies)[company]?.name}}</td>
+            <td>{{(companies)[company]?.address}}</td>
+            <td>{{(companies)[company]?.url}}</td>
+            <td>{{(companies)[company]?.email}}</td>
+            <td><a class="waves-effect waves-light btn" *ngIf="user.status==0 && user.type==1" [routerLink]="['/posts',(companies)[company]?.compId]">Posts</a></td>
+        </tr>
+    </tbody>
+</table>

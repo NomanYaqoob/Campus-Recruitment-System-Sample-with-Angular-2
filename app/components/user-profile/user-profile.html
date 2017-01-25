@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <h4>User Profile</h4>
+                <form #f='ngForm' (ngSubmit)="onSubmit(f.valid,f.value)" novalidate>
+                    <div class="row">
+                        <div class="col s12">
+                            Username:
+                            <div class="input-field inline">
+                                <input id="Username" disabled #username="ngModel" name="username" [(ngModel)]="user.username" type="text" class="validate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            Email:
+                            <div class="input-field inline">
+                                <input id="email" type="email" disabled name="email" class="validate" #email="ngModel" [(ngModel)]="user.email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="firstName" #firstName="ngModel" name="firstName" [(ngModel)]="user.firstName" type="text" class="validate">
+                            <label for="firstName">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="lastName" #lastName="ngModel" name="lastName" [(ngModel)]="user.lastName" type="text" class="validate">
+                            <label for="lastName">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            last Semester Passed:
+
+                            <input id="semester" #semester="ngModel" name="semester" materialize="dropdown" data-activates='semesterDropdown' [(ngModel)]="user.semester"
+                                type="text" class="validate">
+
+                            <ul id='semesterDropdown' class='dropdown-content'>
+                                <li *ngFor="let semester of semesters">
+                                    <a (click)="user.semester = semester.value">{{semester.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col s6">
+                            CGPA:
+                            <input id="cgpa" #cgpa="ngModel" name="cgpa" [(ngModel)]="user.cgpa" type="text" class="validate">
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <div class="row">
+                            <img [src]="selectedSrc || user['profile-image'] ||  '../../assets/images/file.png'" (click)="openModal()" alt="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-action">
+                <div class="right-align">
+                    <a class="waves-effect waves-light btn modal-trigger" (click)="update()">Update</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <image-crop *ngIf="isShown" (getCropImage)="CroppedImageHandler($event)" setDefault="../../assets/images/file.png" [settings]="{strokeWidth:2,strokeColor:'rgba(0,0,0,0)',cropperWidth:200,cropperHeight:200,canvasWidth:365,canvasHeight:200,isRound:false,noFileInput:true}"></image-crop>
+
+    </div>
+    <div class="modal-footer">
+        <a (click)="closeModal()" class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+</div>

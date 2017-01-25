@@ -1,0 +1,9 @@
+<div style="text-align: center">
+<img-cropper #cropper [image]="data" [settings]="cropperSettings" (onCrop)='cropped($event)'></img-cropper>
+</div>
+<span class="result rounded" *ngIf="data.image">
+</span>
+<div style="text-align: center">
+<img [src]="setDefault" (click)="uploadImage()" alt="" [hidden]='isCropStart' style="width:80%;">
+</div>
+<input id="custom-input" #inputElement type="file" (change)="fileChangeListener($event)" [hidden]="true">
