@@ -1,5 +1,5 @@
 {
-  "name": "boiler-plate-webpack-angular2-redux",
+  "name": "campus-recruitment-system-sample-with-angular-2",
   "version": "0.0.1",
   "scripts": {
     "clean": "rm -rf ./dist",

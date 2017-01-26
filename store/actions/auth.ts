@@ -35,10 +35,10 @@ export class AuthActions {
         })
     }
 
-    requestLogin(email: string, password: string, type: number) {
+    requestLogin(email: string, password: string) {
         return this.ngRedux.dispatch({
             type: AuthActions.LOGIN_REQUEST,
-            payload: { email, password, type }
+            payload: { email, password }
         })
     }
 

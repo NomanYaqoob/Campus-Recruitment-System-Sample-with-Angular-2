@@ -27,10 +27,12 @@ export class SignupContainer {
     onSubmit(valid, form) {
         console.log('valid', valid)
         console.log("form", form);
+
         if (form.type == 'company')
             form.type = 2
-        else
-            form.type = 1
+        else {
+            form.status = 0; form.type = 1
+        }
         this.aa.register(form);
     }
 }

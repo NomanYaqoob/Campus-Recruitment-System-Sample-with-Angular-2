@@ -6,7 +6,7 @@
                 <th data-field="sal">Expected Salary</th>
                 <th data-field="desc">Description</th>
                 <th data-field="date">Date</th>
-                <th data-field="apply" *ngIf="currentUser && currentUser?.status == 0 && currentUser?.type==1">Apply</th>
+                <th data-field="apply" *ngIf="currentUser && currentUser?.status == 1 && currentUser?.type==1">Apply</th>
             </tr>
         </thead>
 
@@ -16,7 +16,7 @@
                 <td>{{(posts)[post]?.sal}}</td>
                 <td>{{(posts)[post]?.desc}}</td>
                 <td>{{(posts)[post]?.timestamp | date }}</td>
-                <td><a class="waves-effect waves-light btn" *ngIf="currentUser && currentUser?.status == 0 && currentUser?.type==1"
+                <td><a class="waves-effect waves-light btn" *ngIf="currentUser && currentUser?.status == 1 && currentUser?.type==1"
                         (click)="openModal(post,posts[post]?.companyUid)">Apply</a></td>
             </tr>
         </tbody>

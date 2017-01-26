@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { select, Observable, AuthActions } from "../../../store"
 import { Router } from "@angular/router"
 
@@ -6,6 +6,7 @@ import { Router } from "@angular/router"
     selector: 'root',
     template: require('./root.html'),
     styles: [require('./root.scss')]
+    
 })
 export class RootContainer {
     items: any;

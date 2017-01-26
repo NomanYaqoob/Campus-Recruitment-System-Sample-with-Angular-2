@@ -50,7 +50,9 @@ export class ReduxStoreModule {
             createEpicMiddleware(this.ae.companiesUser),
             createEpicMiddleware(this.pe.addPost),
             createEpicMiddleware(this.ce.requestCompanies),
-            createEpicMiddleware(this.se.requestStudents)
+            createEpicMiddleware(this.ce.requestPostStudents),
+            createEpicMiddleware(this.se.requestStudents),
+
 
 
         ]

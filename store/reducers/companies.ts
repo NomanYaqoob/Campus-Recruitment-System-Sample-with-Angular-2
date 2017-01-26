@@ -22,6 +22,9 @@ export const CompaniesReducer = function (state: IInitialState = initialState, a
             newState.isLoading = false;
             delete newState.companies[action.payload['$key']]['$key'];
             return Object.assign({}, state, newState)
+        case CompaniesActions.POST_STUDENTS_COMPANIES_SUCCESS:
+            console.log('POST_STUDENTS_COMPANIES_SUCCESS', action.payload)
+            return Object.assign(state, state); 
         default:
             return state
     }

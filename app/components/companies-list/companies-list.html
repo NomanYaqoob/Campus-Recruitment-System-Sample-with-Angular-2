@@ -4,9 +4,9 @@
             <th data-field="id" class="center-align">S#</th>
             <th data-field="name" class="center-align">Company Name</th>
             <th data-field="address" class="center-align">Address</th>
-            <th data-field="website" class="center-align" >Website</th>
+            <th data-field="website" class="center-align">Website</th>
             <th data-field="email" class="center-align">Email</th>
-            <th data-field="apply" *ngIf="user.status==0 && user.type==1">Apply</th>
+            <th data-field="apply" *ngIf="user.status==1 && user.type==1">Apply</th>
         </tr>
     </thead>
 
@@ -17,7 +17,7 @@
             <td>{{(companies)[company]?.address}}</td>
             <td>{{(companies)[company]?.url}}</td>
             <td>{{(companies)[company]?.email}}</td>
-            <td><a class="waves-effect waves-light btn" *ngIf="user.status==0 && user.type==1" [routerLink]="['/posts',(companies)[company]?.compId]">Posts</a></td>
+            <td><button class="waves-effect waves-light btn" [disabled]="user.status==0" *ngIf="user.type==1" [routerLink]="['/posts',(companies)[company]?.compId]">Posts</button></td>
         </tr>
     </tbody>
 </table>

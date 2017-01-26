@@ -3,21 +3,20 @@ import { select, Observable, AuthActions } from "../../../store"
 import { MaterializeAction } from "angular2-materialize"
 
 @Component({
-    selector: 'students-data',
-    template: require('./students-data.html'),
-    styles: [require('./students-data.scss')]
+    selector: 'students-applied',
+    template: require('./students-applied.html'),
+    styles: [require('./students-applied.scss')]
 })
-export class StudentDataComponent {
+export class StudentsAppliedComponent {
     items: any;
     @Input() students: any;
     @Input() currentUser: Object;
 
-    @Output() approveEvent: EventEmitter<any>
 
     modalStudent: any = {};
     modalActions = new EventEmitter<string | MaterializeAction>();
     constructor(private aa: AuthActions) {
-        this.approveEvent = new EventEmitter<any>();
+        // this.approveEvent = new EventEmitter<any>();
         // this.items = "";
         // this.aa.requestLogin({ name: "noman" })
     }
@@ -39,6 +38,6 @@ export class StudentDataComponent {
     }
 
     approve(studentId) {
-        this.approveEvent.emit(studentId);
+        // this.approveEvent.emit(studentId);
     }
 }

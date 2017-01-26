@@ -9,7 +9,7 @@
     </thead>
 
     <tbody>
-        <tr class="cursor-style" *ngFor="let student of keys((students));let i = index" >
+        <tr class="cursor-style" *ngFor="let student of keys((students));let i = index">
             <td class="col s2" (click)="openModal(students[student])"> <img class="image" *ngIf="(students)[student]['profile-image']" [src]="(students)[student]['profile-image']"
                     alt=""></td>
             <td class="col s5 takeMargin" (click)="openModal(students[student])">{{(students)[student]?.firstName + " " + (students)[student]?.lastName }}</td>

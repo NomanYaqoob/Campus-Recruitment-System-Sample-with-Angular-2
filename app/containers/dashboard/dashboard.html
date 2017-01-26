@@ -7,13 +7,49 @@
 
 <div *ngIf="(user$ | async).type == 2">
     <div class="card">
-        <a class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Select</a>
-        <students-data [students]="(students$ | async)"></students-data>
+        <button class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Job Post</button>
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs" materialize="tabs">
+                    <li class="tab col s6"><a href="#test1">Students List</a></li>
+                    <li class="tab col s6"><a href="#test2">Students Applied</a></li>
+                </ul>
+            </div>
+            <div id="test1" class="col s12">
+                <h4>Users of the Campus</h4>
+                <students-data [students]="(students$ | async)" [currentUser]="(user$ | async)"></students-data>
+            </div>
+            <div id="test2" class="col s12">
+                Comming soon..
+            </div>
+        </div>
     </div>
 </div>
 
 
-<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+
+<div *ngIf='(user$ | async).type == 3'>
+    <div class="card">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs" materialize="tabs">
+                    <li class="tab col s6"><a href="#test1">Students List</a></li>
+                    <li class="tab col s6"><a href="#test2">Companies</a></li>
+                </ul>
+            </div>
+            <div id="test1" class="col s12">
+                <h4>Users of the Campus</h4>
+                <students-data [students]="(students$ | async)" [currentUser]="(user$ | async)" (approveEvent)="approveEventHandler($event)"></students-data>
+            </div>
+            <div id="test2" class="col s12">
+                <h4>Companies for Recuritment</h4>
+                <companies-list [companies]="(companies$ | async)" [user]='(user$ | async)'></companies-list>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
     <div class="modal-content">
         <h4>Add Job Post</h4>
         <form #f='ngForm' (ngSubmit)="onSubmit(f.valid,f.value)">

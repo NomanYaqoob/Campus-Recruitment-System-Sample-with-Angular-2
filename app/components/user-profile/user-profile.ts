@@ -22,7 +22,7 @@ export class UserProfileComponent implements OnInit {
 
     // @Input() companies: any;
     @Input() user: any
-
+    @Input() displayOnly: boolean;
     @Output() updateEvent: EventEmitter<any>
     selectedSrc: any;
     items: any;

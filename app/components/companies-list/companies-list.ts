@@ -20,7 +20,7 @@ export class CompanyListComponent {
 
 
     keys(list) {
-        console.log('list', list);
+        // console.log('list', list);
         return Object.keys(list);
     }
 

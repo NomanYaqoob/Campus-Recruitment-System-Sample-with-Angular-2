@@ -16,7 +16,7 @@ export class SigninContainer {
         // this.items = "";
         this.user$.subscribe((resUser: any) => {
             console.log('resUser', resUser)
-            if (resUser.type == 1)
+            if (resUser.type == 1 || resUser.type == 3)
                 this.router.navigate(['dashboard', resUser.username]);
             else if (resUser.type == 2)
                 this.router.navigate(['dashboard', resUser.compId]);
@@ -26,13 +26,9 @@ export class SigninContainer {
 
     onSubmit(valid, form) {
         console.log('valid', valid);
-        if (form.type == 'company')
-            form.type = 2
-        else
-            form.type = 1
         if (!valid) return
 
         console.log('form', form)
-        this.aa.requestLogin(form.email, form.password, form.type);
+        this.aa.requestLogin(form.email, form.password);
     }
 }

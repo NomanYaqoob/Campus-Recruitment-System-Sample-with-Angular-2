@@ -19,7 +19,7 @@ export class AuthEpic {
                         this.setLocalStorage(res.auth);
                         return {
                             type: AuthActions.LOGIN_SUCCESS,
-                            payload: { auth: res, type: payload.type }
+                            payload: { auth: res}
                         }
                     })
                     .catch(err => {
@@ -85,7 +85,7 @@ export class AuthEpic {
     loginSuccess = (action$: ActionsObservable<any>) =>
         action$.ofType(AuthActions.LOGIN_SUCCESS)
             .switchMap(({payload}) => {
-                if (payload.fromLoggedIn) {
+                // if (payload.fromLoggedIn) {
                     return Observable.fromPromise(fb.database().ref(`students/${payload.auth.uid}`).once("value"))
                         .map(data => {
                             if (data.val()) {
@@ -103,34 +103,34 @@ export class AuthEpic {
                                 }
                             }
                         })
-                }
-                else {
-                    console.log("payload", payload);
-                    if (payload.type == '1') {
-                        return Observable.fromPromise(fb.database().ref(`students/${payload.auth.uid}`).once("value"))
-                            .map(data => {
-                                if (data.val()) {
-                                    console.log("data", data.val());
-                                    return {
-                                        type: AuthActions.USER_ONLINE,
-                                        payload: { val: data.val(), key: data.key }
-                                    }
-                                }
-                                else {
-                                    console.log('in else');
-                                    return {
-                                        type: AuthActions.USER_ONLINE_FAIL
-                                    }
-                                }
-                            })
-                    }
-                    else {
-                        return Observable.of({
-                            type: AuthActions.GET_USER_FROM_COMPANIES,
-                            payload: payload
-                        })
-                    }
-                }
+                // }
+                // else {
+                //     console.log("payload", payload);
+                //     if (payload.type == '1') {
+                //         return Observable.fromPromise(fb.database().ref(`students/${payload.auth.uid}`).once("value"))
+                //             .map(data => {
+                //                 if (data.val()) {
+                //                     console.log("data", data.val());
+                //                     return {
+                //                         type: AuthActions.USER_ONLINE,
+                //                         payload: { val: data.val(), key: data.key }
+                //                     }
+                //                 }
+                //                 else {
+                //                     console.log('in else');
+                //                     return {
+                //                         type: AuthActions.USER_ONLINE_FAIL
+                //                     }
+                //                 }
+                //             })
+                //     }
+                //     else {
+                //         return Observable.of({
+                //             type: AuthActions.GET_USER_FROM_COMPANIES,
+                //             payload: payload
+                //         })
+                //     }
+                // }
             })
 
 

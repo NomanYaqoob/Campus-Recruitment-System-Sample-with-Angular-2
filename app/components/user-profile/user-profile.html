@@ -22,11 +22,11 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="firstName" #firstName="ngModel" name="firstName" [(ngModel)]="user.firstName" type="text" class="validate">
+                            <input id="firstName" #firstName="ngModel" [disabled]="displayOnly" name="firstName" [(ngModel)]="user.firstName" type="text" class="validate">
                             <label for="firstName">First Name</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="lastName" #lastName="ngModel" name="lastName" [(ngModel)]="user.lastName" type="text" class="validate">
+                            <input id="lastName" #lastName="ngModel" [disabled]="displayOnly" name="lastName" [(ngModel)]="user.lastName" type="text" class="validate">
                             <label for="lastName">Last Name</label>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="col s6">
                             last Semester Passed:
 
-                            <input id="semester" #semester="ngModel" name="semester" materialize="dropdown" data-activates='semesterDropdown' [(ngModel)]="user.semester"
+                            <input id="semester" #semester="ngModel" [disabled]="displayOnly" name="semester" materialize="dropdown" data-activates='semesterDropdown' [(ngModel)]="user.semester"
                                 type="text" class="validate">
 
                             <ul id='semesterDropdown' class='dropdown-content'>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col s6">
                             CGPA:
-                            <input id="cgpa" #cgpa="ngModel" name="cgpa" [(ngModel)]="user.cgpa" type="text" class="validate">
+                            <input id="cgpa" #cgpa="ngModel" name="cgpa" [disabled]="displayOnly" [(ngModel)]="user.cgpa" type="text" class="validate">
                         </div>
                     </div>
                     <div class="card-action">
@@ -57,7 +57,7 @@
             </div>
             <div class="card-action">
                 <div class="right-align">
-                    <a class="waves-effect waves-light btn modal-trigger" (click)="update()">Update</a>
+                    <a class="waves-effect waves-light btn modal-trigger" (click)="update()" *ngIf='!displayOnly'>Update</a>
                 </div>
             </div>
         </div>
